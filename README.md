@@ -9,9 +9,42 @@ It has a fixed block size of 128 bits, and a key size of 128, 192, or 256 bits.
 AES operates on a 4 × 4 column-major order array of bytes, termed the state
 # PROGRAM:
 
+```
+#include <stdio.h>
+#include <string.h>
+
+void xor_encrypt_decrypt(char *input, char *key) {
+    int input_len = strlen(input);
+    int key_len = strlen(key);
+    for (int i = 0; i < input_len; i++) {
+        input[i] = input[i] ^ key[i % key_len];
+    }
+}
+
+int main() {
+    printf("\n\n\n\n");
+
+    char url[] = "HELLWORLD";
+    char key[] = "key123";
+
+    printf("Original text: %s\n", url);
+
+    xor_encrypt_decrypt(url, key);
+    printf("Encrypted text: %s\n", url);
+
+    xor_encrypt_decrypt(url, key);  // Decrypting back using the same function
+    printf("Decrypted text: %s\n", url);
+
+    return 0;
+}
+```
+
 # OUTPUT:
 
+![image](https://github.com/user-attachments/assets/e49d5350-4bbf-4454-998d-6b600ab4e630)
 
 # RESULT:
+The code executed successfully
 
 
+](https://github.com/kaviya546/AES)
